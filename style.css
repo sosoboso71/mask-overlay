@@ -20,7 +20,7 @@ body {
 }
 
 /* ============================
-   TITLU
+   TITLU (NU SE MODIFICĂ)
 ============================ */
 #title {
     font-size: 42px;
@@ -34,19 +34,21 @@ body {
    SEMNĂTURĂ
 ============================ */
 #signature {
-    font-size: 16px;
-    margin-bottom: 20px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px white;
+    margin-bottom: 25px;
 }
 
 /* ============================
-   TIMER CIRCULAR MIC
+   TIMER CIRCULAR — THICK MODE
 ============================ */
 #timer-container {
     position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 10px auto;
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 15px auto;
 }
 
 #timer-svg {
@@ -54,10 +56,11 @@ body {
 }
 
 #timer-bar {
-    stroke-width: 10;
+    stroke-width: 20;
     fill: none;
     stroke: #ff00ff;
     stroke-linecap: round;
+    filter: drop-shadow(0 0 12px #ff00ff) drop-shadow(0 0 25px #ff00ff);
 }
 
 #timer-text {
@@ -65,23 +68,29 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 42px;
+    font-size: 48px;
     font-weight: 900;
+    color: white;
+    text-shadow: 0 0 12px white, 0 0 25px white;
 }
 
 /* ============================
-   TOP ZILNIC — CUTIE FIXĂ
+   TICKER — THICK MODE
 ============================ */
 #ticker {
-    width: 80%;
-    margin: 10px auto 20px auto;
-    padding: 8px 12px;
-    border-radius: 8px;
-    background: rgba(0,0,0,0.35);
+    width: 85%;
+    margin: 15px auto 25px auto;
+    padding: 12px 18px;
+    border-radius: 10px;
+    background: rgba(0,0,0,0.55);
     overflow: hidden;
     white-space: nowrap;
-    font-size: 22px;
-    font-weight: 700;
+    font-size: 26px;
+    font-weight: 900;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px white;
+    border: 3px solid rgba(255,255,255,0.6);
+    box-shadow: 0 0 15px white;
     position: relative;
 }
 
@@ -96,51 +105,61 @@ body {
 }
 
 /* ============================
-   CASETE LITERE
+   CASETE LITERE — THICK MODE
 ============================ */
 #word-container {
     display: flex;
     justify-content: center;
-    gap: 12px;
+    gap: 14px;
     flex-wrap: wrap;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 .word-block {
     display: flex;
-    gap: 6px;
+    gap: 8px;
 }
 
 .letter-box {
-    width: 38px;
-    height: 48px;
-    border-radius: 6px;
+    width: 48px;
+    height: 58px;
+    border-radius: 8px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 28px;
-    font-weight: 800;
-    background: rgba(0,0,0,0.4);
-    border: 2px solid;
-    box-shadow: 0 0 12px currentColor;
+    font-size: 34px;
+    font-weight: 900;
+    background: rgba(0,0,0,0.55);
+    border: 4px solid;
+    box-shadow: 0 0 18px currentColor, 0 0 35px currentColor;
+    color: white;
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor;
 }
 
 /* ============================
    CATEGORIE / HINT / STATUS
 ============================ */
 #category {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 10px;
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px white;
 }
 
 #hint {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 26px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px white;
 }
 
 #status {
-    font-size: 22px;
-    font-weight: 700;
-    margin-bottom: 20px;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 25px;
+    white-space: pre-line;
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px white;
 }
