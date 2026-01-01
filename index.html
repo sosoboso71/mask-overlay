@@ -1,59 +1,106 @@
- 
+
 <!DOCTYPE html>
 <html lang="ro">
 <head>
     <meta charset="UTF-8">
-    <title>MASK CLUB — Panou Admin</title>
+    <title>MASK CLUB GAME</title>
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
-            background: #000;
-            color: #0f0;
+            background: transparent;
+            margin: 0;
+            padding: 0;
             font-family: monospace;
-            padding: 20px;
-        }
-        h1 {
             color: #0f0;
+            text-align: center;
+        }
+
+        #signature {
+            margin-top: 10px;
+            font-size: 22px;
             text-shadow: 0 0 10px #0f0;
         }
-        #controls {
+
+        #category {
             margin-top: 20px;
+            font-size: 28px;
+            text-shadow: 0 0 10px #0f0;
         }
-        button {
-            background: black;
-            color: #0f0;
+
+        #word-container {
+            margin-top: 40px;
+            display: inline-block;
+        }
+
+        .word-block {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .letter-box {
+            width: 40px;
+            height: 40px;
             border: 2px solid #0f0;
-            padding: 10px 20px;
-            margin-right: 10px;
-            cursor: pointer;
-            font-size: 16px;
+            margin: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 26px;
             text-shadow: 0 0 10px #0f0;
         }
-        button:hover {
-            background: #0f0;
-            color: black;
+
+        #timer {
+            margin-top: 30px;
         }
-        #correctAnswerBox {
+
+        #timer-text {
+            font-size: 40px;
+            text-shadow: 0 0 10px #0f0;
+        }
+
+        #status {
             margin-top: 20px;
-            padding: 10px;
-            border: 1px solid #0f0;
-            width: fit-content;
+            font-size: 22px;
+            min-height: 40px;
+        }
+
+        #hint {
+            margin-top: 20px;
+            font-size: 22px;
+            min-height: 30px;
+        }
+
+        #ticker {
+            margin-top: 40px;
+            font-size: 20px;
+            white-space: nowrap;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
 
-<h1>MASK CLUB — Panou Admin</h1>
+<div id="signature">Created by Sorin</div>
 
-<div id="controls">
-    <button id="startGameBtn">START GAME</button>
-    <button id="stopGameBtn">STOP GAME</button>
+<div id="category">Categoria apare aici</div>
+
+<div id="word-container"></div>
+
+<div id="timer">
+    <div id="timer-text">90</div>
+    <svg width="120" height="120">
+        <circle cx="60" cy="60" r="50" stroke="#0f0" stroke-width="4" fill="none" />
+        <circle id="timer-bar" cx="60" cy="60" r="50" stroke="#0f0" stroke-width="4" fill="none"
+                stroke-dasharray="314" stroke-dashoffset="0" />
+    </svg>
 </div>
 
-<div id="correctAnswerBox">
-    <strong>Răspuns corect:</strong>
-    <span id="correctAnswer">---</span>
-</div>
+<div id="hint"></div>
 
-<script src="admin.js"></script>
+<div id="status"></div>
+
+<div id="ticker"></div>
+
+<script src="game.js"></script>
 </body>
 </html>
