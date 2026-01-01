@@ -1,4 +1,5 @@
- // ===============================
+ 
+// ===============================
 // STATE PRINCIPAL
 // ===============================
 let words = [];
@@ -103,6 +104,11 @@ function startNewRound() {
     currentWord = random.word.toLowerCase();
     currentCategory = random.category;
     currentHint = random.hint || "";
+
+    // 🔥 TRIMITERE AUTOMATĂ A RĂSPUNSULUI CORECT ÎN PANOU
+    if (typeof adminSetCorrectAnswer === "function") {
+        adminSetCorrectAnswer(currentWord);
+    }
 
     const parts = currentWord.split(" ");
     revealed = parts.map(part => Array(part.length).fill("_"));
