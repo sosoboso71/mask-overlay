@@ -13,6 +13,9 @@ const ROUND_DURATION = 90;
 
 let roundActive = false;
 
+// MOTORUL JOCULUI (PORNEȘTE DOAR LA COMANDA TA)
+let gameRunning = false;
+
 // hint timing
 let hintJSONGiven = false;
 let hintJSONMoment = null;
@@ -26,14 +29,14 @@ let globalScores = {};
 let todayDate = getTodayDate();
 
 // ===============================
-// PORNIRE JOC
+// PORNIRE JOC (NU MAI PORNEȘTE AUTOMAT)
 // ===============================
 fetch("config.json")
     .then(res => res.json())
     .then(data => {
         words = data;
         loadScores();
-        startNewRound();
+        // startNewRound();  // dezactivat — jocul pornește doar la START GAME
         connectWebSocket();
     });
 
@@ -90,6 +93,10 @@ function addPoints(nickname, points) {
 // RUNDĂ NOUĂ
 // ===============================
 function startNewRound() {
+
+    // MOTORUL ESTE OPRIT → NU PORNIM RUNDĂ
+    if (!gameRunning) return;
+
     roundActive = true;
     timeLeft = ROUND_DURATION;
 
@@ -105,7 +112,7 @@ function startNewRound() {
     currentCategory = random.category;
     currentHint = random.hint || "";
 
-    // 🔥 TRIMITERE AUTOMATĂ A RĂSPUNSULUI CORECT ÎN PANOU
+    // trimitem răspunsul corect în panoul admin
     if (typeof adminSetCorrectAnswer === "function") {
         adminSetCorrectAnswer(currentWord);
     }
@@ -238,6 +245,21 @@ function connectWebSocket() {
         try {
             const json = JSON.parse(event.data);
 
+            // START GAME din panoul admin
+            if (json.event === "startgame") {
+                if (!gameRunning) {
+                    gameRunning = true;
+                    startNewRound();
+                }
+            }
+
+            // STOP GAME din panoul admin
+            if (json.event === "stopgame") {
+                gameRunning = false;
+                clearInterval(timerInterval);
+                updateStatus("Joc oprit.");
+            }
+
             if (json.event === "chat") {
                 const nickname = json.data.nickname;
                 const message = json.data.comment;
@@ -256,6 +278,23 @@ function connectWebSocket() {
 function handleChatMessage(nickname, message) {
     if (!message.startsWith("#")) return;
     const cmd = message.trim().toLowerCase();
+
+    // START GAME din chat
+    if (cmd === "#startgame") {
+        if (!gameRunning) {
+            gameRunning = true;
+            startNewRound();
+        }
+        return;
+    }
+
+    // STOP GAME din chat
+    if (cmd === "#stopgame") {
+        gameRunning = false;
+        clearInterval(timerInterval);
+        updateStatus("Joc oprit.");
+        return;
+    }
 
     if (cmd === "#global") return showGlobalLeaderboard();
     if (cmd === "#scor") return showPlayerScore(nickname);
