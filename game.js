@@ -13,7 +13,7 @@ const ROUND_DURATION = 90;
 
 let roundActive = false;
 
-// MOTORUL JOCULUI (PORNEȘTE DOAR LA COMANDA TA)
+// MOTORUL JOCULUI — PORNEȘTE DOAR LA START GAME
 let gameRunning = false;
 
 // hint timing
